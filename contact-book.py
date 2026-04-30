@@ -1,4 +1,5 @@
 def main():
+    contacts = {}
     
     while True:
         
@@ -12,8 +13,25 @@ def main():
         
         choice = int(input("Choose a menu item number: "))
 
-        if choice in (1, 2):
-            pass
+        if choice == 1:
+            # capture name, email, address, and phone number from user input
+            ## name = input("Contact Name")
+            ### split out into first and last name
+            ## email = input("Email Address")
+            ## address = Address(street, city, country)
+            ## phone = input("Phone Number")
+            ### remove non-numerical values from string to get an integer value
+            # check if email address already exists in keys, if not...
+            # create new contact record from Contact(Record) class
+            ## new_contact = Contact(name, email, Address(), phone)
+
+
+        elif choice == 2:
+            if not contacts:
+
+            try:
+                #find if contact already exists by email
+                contact =
 
         elif choice == 3:
             pass
