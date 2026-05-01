@@ -35,12 +35,22 @@ class Contact(Record):
         return f"{class_name}(name={self.name}, email={self.email}, address={self.address!r}, phone={self.phone}, created_at={self.created_at})"
     
     def __str__(self):
-        return f"""\n
+        return f"""
         {self.name}
         {self.email}
         {self.address!s}
         {self.phone}
         {self.created_at}"""
+
+    def summary(self):
+        return f"""
+        ----- Contact Card -----
+        Name:       {self.name}
+        Email:      {self.email}
+        Address:    {self.address!s}
+        Phone:      {self.phone}
+        Created:    {self.created_at}
+        """        
     
     @property
     def email(self):
