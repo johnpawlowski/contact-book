@@ -1,3 +1,9 @@
+import contact_book
+
+Address = contact_book.Address
+Contact = contact_book.Contact
+ContactBook = contact_book.ContactBook
+
 def main():
     contacts = {}
     
