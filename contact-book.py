@@ -26,3 +26,9 @@ class Contact(Record):
     @property
     def email(self):
         return self._email
+
+    @email.setter
+    def email(self, value):
+        if "@" not in value:
+            raise ValueError("Invalid email: {value}")
+        self._email = value.lower()
