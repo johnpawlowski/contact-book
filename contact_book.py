@@ -26,6 +26,15 @@ class ContactBook:
             raise DuplicateContactError(contact.email)
         self._contacts[contact.email] = contact
 
+class ContactBookError(Exception):
+    pass
+class DuplicateContactError(ContactBookError):
+    def __init__(self, email):
+        super().__init__(f"Contact with {email} already ")
+class ContactNotFoundError(ContactBookError):
+    def __init__(self, query):
+        super().__init__(f"No contact found matching '{query}'")
+
 class Record:
     def __init__(self, created_at):
         self.created_at = created_at
