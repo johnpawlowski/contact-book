@@ -35,7 +35,11 @@ class ContactBook:
         print(f"{'Name':<20}{'Email':<20}{'Phone':<20}{'Created At':<20}")
         for contact in self._contacts:
             print(f"{contact.name:<20}{contact.email:<20}{contact.phone:<20}{contact.created_at:<20}")
-
+    
+    def remove(self, email):
+        if email not in self._contacts:
+            raise ContactNotFoundError(email)
+        del self._contacts[email]
 
 class ContactBookError(Exception):
     pass
