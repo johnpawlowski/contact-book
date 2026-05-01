@@ -28,13 +28,11 @@ def main():
                 print(f"{e}")
                 continue
             name = input("Contact Name: ").strip()
-            ### split out into first and last name
             street = input("Address (street): ").strip()
             city = input("Address (city): ").strip()
             country = input("Address (country): ").strip()
             address = Address(street, city, country)
             phone = input("Phone Number: ").strip()
-            ### remove non-numerical values from string to get an integer value
             new_contact = Contact(name, email, address, phone)
             contacts.add(new_contact)
 
