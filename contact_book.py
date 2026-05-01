@@ -85,13 +85,14 @@ class Contact(Record):
         {self.created_at}"""
 
     def summary(self):
+        created = self.created_at.strftime("%Y-%m-%d %H:%M")
         return f"""
         ----- Contact Card -----
         Name:       {self.name}
         Email:      {self.email}
         Address:    {self.address!s}
         Phone:      {self.phone}
-        Created:    {self.created_at}
+        Created:    {created}
         """        
     
     @property
