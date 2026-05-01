@@ -16,10 +16,10 @@ def main():
     4. List All Contacts
     5. Quit""")
         
-        choice = int(input("Choose a menu item number: ").strip())
+        choice = input("Choose a menu item number: ").strip()
 
         # add contact
-        if choice == 1:
+        if choice == "1":
             email = input("Email Address: ").strip()
             try:
                 if email in contacts.contacts:
@@ -39,7 +39,7 @@ def main():
             contacts.add(new_contact)
 
         # remove contact
-        elif choice == 2:
+        elif choice == "2":
             if not contacts.contacts:
                 print("No contacts exist.")
                 continue
@@ -47,7 +47,7 @@ def main():
             contacts.remove(to_remove)
 
         # view contact
-        elif choice == 3:
+        elif choice == "3":
             if not contacts.contacts:
                 print("No contacts exist.")
                 continue
@@ -56,14 +56,14 @@ def main():
             print(to_view.summary())
 
         # list contacts
-        elif choice == 4:
+        elif choice == "4":
             if not contacts.contacts:
                 print("No contacts exist.")
                 continue
             contacts.list()
 
         # quit program
-        elif choice == 5:
+        elif choice == "5":
             print("Goodbye")
             break
 
