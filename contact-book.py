@@ -4,6 +4,13 @@ class Address:
         self.city = city
         self.country = country
 
+    def __repr__(self):
+        class_name = type(self).__name__
+        return f"{class_name}(street={self.street}, city={self.city}, country={self.country})"
+    
+    def __str__(self):
+        return f"{self.street}, {self.city}, {self.country}"
+
 class ContactBook:
     pass
 
