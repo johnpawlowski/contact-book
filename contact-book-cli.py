@@ -16,18 +16,21 @@ def main():
         # add contact
         if choice == 1:
             # capture name, email, address, and phone number from user input
-            ## name = input("Contact Name")
+            email = input("Email Address: ")
+            if email in contacts:
+                print("Contact already exists")
+                continue
+            name = input("Contact Name: ")
             ### split out into first and last name
-            ## email = input("Email Address")
-            # find if contact already exists by email
-            ##  if email in contacts:
-            ##      print("Contact already exists")
-            ## address = Address(street, city, country)
-            ## phone = input("Phone Number")
+            street = input("Address (street): ")
+            city = input("Address (city): ")
+            country = input("Address (country): ")
+            address = Address(street, city, country)
+            phone = input("Phone Number: ")
             ### remove non-numerical values from string to get an integer value
-            # check if email address already exists in keys, if not...
             # create new contact record from Contact(Record) class
-            ## new_contact = Contact(name, email, Address(), phone)
+            new_contact = Contact(name, email, address, phone)
+            contacts[email] = new_contact
 
         # remove contact
         elif choice == 2:
@@ -35,7 +38,7 @@ def main():
                 print("No contacts exist.")
             try:
                 email = input("Email Address")
-                
+
 
         # view contact
         elif choice == 3:
