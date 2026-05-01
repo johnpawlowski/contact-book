@@ -5,7 +5,7 @@ Contact = contact_book.Contact
 ContactBook = contact_book.ContactBook
 
 def main():
-    contacts = {}
+    contacts = ContactBook
     
     while True:
         
@@ -17,42 +17,47 @@ def main():
               5. Quit
               """)
         
-        choice = int(input("Choose a menu item number: "))
+        choice = int(input("Choose a menu item number: ").strip())
 
         # add contact
         if choice == 1:
-            # capture name, email, address, and phone number from user input
-            email = input("Email Address: ")
+            email = input("Email Address: ").strip()
             if email in contacts:
                 print("Contact already exists")
                 continue
-            name = input("Contact Name: ")
+            name = input("Contact Name: ").strip()
             ### split out into first and last name
-            street = input("Address (street): ")
-            city = input("Address (city): ")
-            country = input("Address (country): ")
-            address = Address(street, city, country)
-            phone = input("Phone Number: ")
+            street = input("Address (street): ").strip()
+            city = input("Address (city): ").strip()
+            country = input("Address (country): ").strip()
+            address = Address(street, city, country).strip()
+            phone = input("Phone Number: ").strip()
             ### remove non-numerical values from string to get an integer value
-            # create new contact record from Contact(Record) class
             new_contact = Contact(name, email, address, phone)
-            contacts[email] = new_contact
+            contacts.add(new_contact)
 
         # remove contact
         elif choice == 2:
             if not contacts:
                 print("No contacts exist.")
-            try:
-                email = input("Email Address")
-
+                continue
+            to_remove = input("Enter the email of the contact to remove: ").strip().lower()
+            contacts.remove(to_remove)
 
         # view contact
         elif choice == 3:
-            pass
+            if not contacts:
+                print("No contacts exist.")
+                continue
+            to_view = input("Enter the contact email: ").strip()
+            print(contacts[to_view])
 
         # list contacts
         elif choice == 4:
-            pass
+            if not contacts:
+                print("No contacts exist.")
+                continue
+            contacts.list()
 
         # quit program
         elif choice == 5:
