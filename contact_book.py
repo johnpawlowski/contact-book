@@ -12,7 +12,14 @@ class Address:
         return f"{self.street}, {self.city}, {self.country}"
 
 class ContactBook:
-    pass
+    def __init__(self):
+        self._contacts = {}
+
+    def __repr__(self):
+        pass
+
+    def __str__(self):
+        pass
 
 class Record:
     def __init__(self, created_at):
