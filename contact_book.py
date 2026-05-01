@@ -51,7 +51,7 @@ class ContactBookError(Exception):
     pass
 class DuplicateContactError(ContactBookError):
     def __init__(self, email):
-        super().__init__(f"Contact with {email} already ")
+        super().__init__(f"Contact with the email '{email}' already exists")
 class ContactNotFoundError(ContactBookError):
     def __init__(self, query):
         super().__init__(f"No contact found matching '{query}'")

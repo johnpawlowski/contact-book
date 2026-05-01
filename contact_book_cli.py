@@ -1,8 +1,8 @@
-import contact_book
+import contact_book as cb
 
-Address = contact_book.Address
-Contact = contact_book.Contact
-ContactBook = contact_book.ContactBook
+Address = cb.Address
+Contact = cb.Contact
+ContactBook = cb.ContactBook
 
 def main():
     contacts = ContactBook()
@@ -21,9 +21,12 @@ def main():
         # add contact
         if choice == 1:
             email = input("Email Address: ").strip()
-            # if email in contacts:
-            #     print("Contact already exists")
-            #     continue
+            try:
+                if email in contacts.contacts:
+                    raise cb.DuplicateContactError(email)
+            except cb.DuplicateContactError as e:
+                print(f"{e}")
+                continue
             name = input("Contact Name: ").strip()
             ### split out into first and last name
             street = input("Address (street): ").strip()
