@@ -30,7 +30,7 @@ def main():
             street = input("Address (street): ").strip()
             city = input("Address (city): ").strip()
             country = input("Address (country): ").strip()
-            address = Address(street, city, country).strip()
+            address = Address(street, city, country)
             phone = input("Phone Number: ").strip()
             ### remove non-numerical values from string to get an integer value
             new_contact = Contact(name, email, address, phone)
