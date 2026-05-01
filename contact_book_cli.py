@@ -10,12 +10,11 @@ def main():
     while True:
         
         print("""----- Contact Book CLI -----
-              1. Add Contact
-              2. Remove Contact
-              3. Find Contact by Email
-              4. List All Contacts
-              5. Quit
-              """)
+    1. Add Contact
+    2. Remove Contact
+    3. Find Contact by Email
+    4. List All Contacts
+    5. Quit""")
         
         choice = int(input("Choose a menu item number: ").strip())
 
