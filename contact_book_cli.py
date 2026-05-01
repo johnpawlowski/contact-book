@@ -5,7 +5,7 @@ Contact = contact_book.Contact
 ContactBook = contact_book.ContactBook
 
 def main():
-    contacts = ContactBook
+    contacts = ContactBook()
     
     while True:
         
@@ -22,9 +22,9 @@ def main():
         # add contact
         if choice == 1:
             email = input("Email Address: ").strip()
-            if email in contacts:
-                print("Contact already exists")
-                continue
+            # if email in contacts:
+            #     print("Contact already exists")
+            #     continue
             name = input("Contact Name: ").strip()
             ### split out into first and last name
             street = input("Address (street): ").strip()
@@ -38,7 +38,7 @@ def main():
 
         # remove contact
         elif choice == 2:
-            if not contacts:
+            if not contacts.contacts:
                 print("No contacts exist.")
                 continue
             to_remove = input("Enter the email of the contact to remove: ").strip().lower()
@@ -46,7 +46,7 @@ def main():
 
         # view contact
         elif choice == 3:
-            if not contacts:
+            if not contacts.contacts:
                 print("No contacts exist.")
                 continue
             contact_email = input("Enter the contact email: ").strip()
@@ -55,7 +55,7 @@ def main():
 
         # list contacts
         elif choice == 4:
-            if not contacts:
+            if not contacts.contacts:
                 print("No contacts exist.")
                 continue
             contacts.list()

@@ -21,6 +21,10 @@ class ContactBook:
     def __str__(self):
         pass
 
+    @property
+    def contacts(self):
+        return self._contacts
+
     def add(self, contact):
         if contact.email in self._contacts:
             raise DuplicateContactError(contact.email)
