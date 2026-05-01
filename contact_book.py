@@ -30,6 +30,12 @@ class ContactBook:
         if email not in self._contacts:
             raise ContactNotFoundError(email)
         return self._contacts[email]
+    
+    def list(self):
+        print(f"{'Name':<20}{'Email':<20}{'Phone':<20}{'Created At':<20}")
+        for contact in self._contacts:
+            print(f"{contact.name:<20}{contact.email:<20}{contact.phone:<20}{contact.created_at:<20}")
+
 
 class ContactBookError(Exception):
     pass
