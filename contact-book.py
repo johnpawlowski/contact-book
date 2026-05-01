@@ -29,6 +29,18 @@ class Contact(Record):
         self.email = email
         self.address = address
         self.phone = phone
+
+    def __repr__(self):
+        class_name = type(self).__name__
+        return f"{class_name}(name={self.name}, email={self.email}, address={self.address!r}, phone={self.phone}, created_at={self.created_at})"
+    
+    def __str__(self):
+        return f"""\n
+        {self.name}
+        {self.email}
+        {self.address!s}
+        {self.phone}
+        {self.created_at}"""
     
     @property
     def email(self):
