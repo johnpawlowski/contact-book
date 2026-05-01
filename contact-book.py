@@ -1,11 +1,28 @@
 class Address:
-    pass
+    def __init__(self, street, city, country):
+        self.street = street
+        self.city = city
+        self.country = country
 
 class ContactBook:
     pass
 
 class Record:
-    pass
+    def __init__(self, created_at):
+        self.created_at = created_at
+
+    def summary(self):
+        raise NotImplementedError("Subclasses must implement summary()")
 
 class Contact(Record):
-    pass
+    def __init__(self, name, email, address, phone, created_at):
+        super().__init__(created_at)
+        self.name = name
+        self._email = None
+        self.email = email
+        self.address = address
+        self.phone = phone
+    
+    @property
+    def email(self):
+        return self._email
