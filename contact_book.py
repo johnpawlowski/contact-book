@@ -38,7 +38,7 @@ class ContactBook:
     
     def list(self):
         print(f"{'Name':<20}{'Email':<20}{'Phone':<20}{'Created At':<20}")
-        for contact in self._contacts:
+        for contact in self._contacts.values():
             print(f"{contact.name:<20}{contact.email:<20}{contact.phone:<20}{contact.created_at:<20}")
     
     def remove(self, email):
