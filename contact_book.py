@@ -1,3 +1,4 @@
+import datetime
 class Address:
     def __init__(self, street, city, country):
         self.street = street
@@ -55,15 +56,15 @@ class ContactNotFoundError(ContactBookError):
         super().__init__(f"No contact found matching '{query}'")
 
 class Record:
-    def __init__(self, created_at):
-        self.created_at = created_at
+    def __init__(self):
+        self.created_at = datetime.datetime.now()
 
     def summary(self):
         raise NotImplementedError("Subclasses must implement summary()")
 
 class Contact(Record):
-    def __init__(self, name, email, address, phone, created_at):
-        super().__init__(created_at)
+    def __init__(self, name, email, address, phone):
+        super().__init__()
         self.name = name
         self._email = None
         self.email = email
