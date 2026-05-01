@@ -21,6 +21,11 @@ class ContactBook:
     def __str__(self):
         pass
 
+    def add(self, contact):
+        if contact.email in self._contacts:
+            raise DuplicateContactError(contact.email)
+        self._contacts[contact.email] = contact
+
 class Record:
     def __init__(self, created_at):
         self.created_at = created_at
