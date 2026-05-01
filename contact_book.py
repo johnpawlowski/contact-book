@@ -26,6 +26,11 @@ class ContactBook:
             raise DuplicateContactError(contact.email)
         self._contacts[contact.email] = contact
 
+    def find(self, email):
+        if email not in self._contacts:
+            raise ContactNotFoundError(email)
+        return self._contacts[email]
+
 class ContactBookError(Exception):
     pass
 class DuplicateContactError(ContactBookError):
