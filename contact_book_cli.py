@@ -49,8 +49,9 @@ def main():
             if not contacts:
                 print("No contacts exist.")
                 continue
-            to_view = input("Enter the contact email: ").strip()
-            print(contacts[to_view])
+            contact_email = input("Enter the contact email: ").strip()
+            to_view = contacts[contact_email]
+            to_view.summary()
 
         # list contacts
         elif choice == 4:
