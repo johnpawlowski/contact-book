@@ -21,11 +21,8 @@ def main():
         # add contact
         if choice == "1":
             email = input("Email Address: ").strip()
-            try:
-                if email in contacts.contacts:
-                    raise cb.DuplicateContactError(email)
-            except cb.DuplicateContactError as e:
-                print(f"{e}")
+            if email in contacts.contacts:
+                print(f"{cb.DuplicateContactError(email)}")
                 continue
             name = input("Contact Name: ").strip()
             street = input("Address (street): ").strip()
