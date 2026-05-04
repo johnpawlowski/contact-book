@@ -38,8 +38,11 @@ def main():
             if not contacts.contacts:
                 print("No contacts exist.")
                 continue
-            to_remove = input("Enter the email of the contact to remove: ").strip().lower()
-            contacts.remove(to_remove)
+            try:
+                to_remove = input("Enter the email of the contact to remove: ").strip().lower()
+                contacts.remove(to_remove)
+            except cb.ContactNotFoundError as e:
+                print(f"{e}")
 
         # view contact
         elif choice == "3":
@@ -47,8 +50,11 @@ def main():
                 print("No contacts exist.")
                 continue
             contact_email = input("Enter the contact email: ").strip()
-            to_view = contacts.contacts[contact_email]
-            print(to_view.summary())
+            try:
+                to_view = contacts.find(contact_email)
+                print(to_view.summary())
+            except cb.ContactNotFoundError as e:
+                print(f"{e}")
 
         # list contacts
         elif choice == "4":
