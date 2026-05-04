@@ -49,6 +49,15 @@ class ContactBook:
             raise ContactNotFoundError(email)
         del self._contacts[email]
 
+    def update(self, email, key, new_value):
+        key = key.lower()
+        allowed_fields = ["name", "phone", "address"]
+        if email not in self._contacts:
+            raise ContactNotFoundError(email)
+        if key not in allowed_fields:
+            raise ValueError(f"{key} is not a valid field. Choose from: {', '.join(allowed_fields)}")
+        setattr(self._contacts[email], key, new_value)
+
     def save(self):
         save_state = {
             email: {"name":contact.name, 
