@@ -58,8 +58,8 @@ class ContactNotFoundError(ContactBookError):
         super().__init__(f"No contact found matching '{query}'")
 
 class Record:
-    def __init__(self):
-        self.created_at = datetime.datetime.now()
+    def __init__(self, created_at):
+        self.created_at = created_at if created_at is not None else datetime.datetime.now()
 
     def summary(self):
         raise NotImplementedError("Subclasses must implement summary()")
