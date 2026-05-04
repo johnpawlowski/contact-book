@@ -59,13 +59,21 @@ class ContactBook:
                                 "country": contact.address.country}, 
                     "phone": contact.phone, 
                     "created_at": contact.created_at.isoformat()}
-            for email, contact in self._contacts.values()
+            for email, contact in self._contacts.items()
             }
         with open("save_state.json", "w") as f:
             json.dump(save_state, f, indent=2)
 
     def load(self):
-        pass
+        try:
+            with open("save_state.json", "r") as f:
+                load_state = json.load(f)
+        except FileNotFoundError:
+            return {}
+        if not load_state:
+            return {}
+        else:
+            return [BankAccount(item['owner'], item['balance'], item['transactions']) for item in load_state]
 
 class ContactBookError(Exception):
     pass
