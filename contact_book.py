@@ -1,6 +1,6 @@
 import datetime
 import json
-import csv
+from tabulate import tabulate # type: ignore
 class Address:
     def __init__(self, street, city, country):
         self.street = street
@@ -40,11 +40,14 @@ class ContactBook:
         return self._contacts[email]
     
     def list(self):
-        print(f"{'Name':<25}|{'Email':<40}|{'Phone':<20}|{'Created At':<15}")
-        print("-------------------------|----------------------------------------|--------------------|---------------")
-        for contact in self._contacts.values():
-            created = contact.created_at.strftime("%Y-%m-%d %H:%M")
-            print(f"{contact.name:<25}|{contact.email:<40}|{contact.phone:<20}|{created:<15}")
+        headers = ["Name", "Email", "Phone", "Created At"]
+        rows = [[contact.name, contact.email, contact.phone, contact.created_at.strftime("%Y-%m-%d %H:%M")] for contact in self._contacts.values()]
+        print(tabulate(rows, headers, colalign=("left", "left", "left", "left"), tablefmt = "outline"))
+        # print(f"{'Name':<25}|{'Email':<40}|{'Phone':<20}|{'Created At':<15}")
+        # print("-------------------------|----------------------------------------|--------------------|---------------")
+        # for contact in self._contacts.values():
+        #     created = contact.created_at.strftime("%Y-%m-%d %H:%M")
+        #     print(f"{contact.name:<25}|{contact.email:<40}|{contact.phone:<20}|{created:<15}")
     
     def remove(self, email):
         if email not in self._contacts:
