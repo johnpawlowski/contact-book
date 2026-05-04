@@ -73,7 +73,7 @@ class ContactBook:
         if not load_state:
             return {}
         else:
-            return {email: Contact(data['name'], 
+            self._contacts = {email: Contact(data['name'], 
                                    data['email'], 
                                    Address(data['address']['street'], 
                                            data['address']['city'], 
