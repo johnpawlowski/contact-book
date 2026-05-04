@@ -1,4 +1,6 @@
 import datetime
+import json
+import csv
 class Address:
     def __init__(self, street, city, country):
         self.street = street
@@ -47,6 +49,23 @@ class ContactBook:
         if email not in self._contacts:
             raise ContactNotFoundError(email)
         del self._contacts[email]
+
+    def save(self):
+        save_state = {
+            email: {"name":contact.name, 
+                    "email": contact.email, 
+                    "address": {"street": contact.address.street, 
+                                "city": contact.address.city, 
+                                "country": contact.address.country}, 
+                    "phone": contact.phone, 
+                    "created_at": contact.created_at.isoformat()}
+            for email, contact in self._contacts.values()
+            }
+        with open("save_state.json", "w") as f:
+            json.dump(save_state, f, indent=2)
+
+    def load(self):
+        pass
 
 class ContactBookError(Exception):
     pass
