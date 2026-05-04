@@ -36,7 +36,7 @@ def main():
             contacts.add(new_contact)
             contacts.save()
         
-        if choice == "2":
+        elif choice == "2":
             email = input("Enter the email of the contact to update: ").strip().lower()
             if email not in contacts.contacts:
                 print(f"{cb.ContactNotFoundError(email)}")
