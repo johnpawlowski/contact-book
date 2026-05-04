@@ -6,6 +6,7 @@ ContactBook = cb.ContactBook
 
 def main():
     contacts = ContactBook()
+    contacts.load()
     
     while True:
         
@@ -32,6 +33,7 @@ def main():
             phone = input("Phone Number: ").strip()
             new_contact = Contact(name, email, address, phone)
             contacts.add(new_contact)
+            contacts.save()
 
         # remove contact
         elif choice == "2":
@@ -41,6 +43,7 @@ def main():
             try:
                 to_remove = input("Enter the email of the contact to remove: ").strip().lower()
                 contacts.remove(to_remove)
+                contacts.save()
             except cb.ContactNotFoundError as e:
                 print(f"{e}")
 
