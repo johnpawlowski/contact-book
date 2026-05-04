@@ -17,10 +17,11 @@ class ContactBook:
         self._contacts = {}
 
     def __repr__(self):
-        pass
+        class_name = type(self).__name__
+        return f"{class_name}({self._contacts!r})"
 
     def __str__(self):
-        pass
+        return f"ContactBook with {len(self._contacts)} contact(s)."
 
     @property
     def contacts(self):
