@@ -102,5 +102,5 @@ class Contact(Record):
     @email.setter
     def email(self, value):
         if "@" not in value:
-            raise ValueError("Invalid email: {value}")
+            raise ValueError(f"Invalid email: {value}")
         self._email = value.lower()
