@@ -40,10 +40,11 @@ class ContactBook:
         return self._contacts[email]
     
     def list(self):
-        print(f"{'Name':<20}{'Email':<20}{'Phone':<20}{'Created At':<20}")
+        print(f"{'Name':<25}|{'Email':<40}|{'Phone':<20}|{'Created At':<15}")
+        print("-------------------------|----------------------------------------|--------------------|---------------")
         for contact in self._contacts.values():
             created = contact.created_at.strftime("%Y-%m-%d %H:%M")
-            print(f"{contact.name:<20}{contact.email:<20}{contact.phone:<20}{created:<20}")
+            print(f"{contact.name:<25}|{contact.email:<40}|{contact.phone:<20}|{created:<15}")
     
     def remove(self, email):
         if email not in self._contacts:
