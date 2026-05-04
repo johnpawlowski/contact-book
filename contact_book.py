@@ -73,7 +73,14 @@ class ContactBook:
         if not load_state:
             return {}
         else:
-            return [BankAccount(item['owner'], item['balance'], item['transactions']) for item in load_state]
+            return {email: Contact(data['name'], 
+                                   data['email'], 
+                                   Address(data['address']['street'], 
+                                           data['address']['city'], 
+                                           data['address']['country']), 
+                                   data['phone'],
+                                   datetime.datetime.fromisoformat(data['created_at'])) 
+                    for email, data in load_state.items()}
 
 class ContactBookError(Exception):
     pass
